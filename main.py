@@ -18,6 +18,10 @@ def index():
     if request.method == "POST":
         url = request.form.get("url")
         keyword = request.form.get("keyword")
+
+        newUrl = Urls(url=url, keyword=keyword)
+        db.session.add(newUrl)
+        db.session.commit()
     return render_template('index.html')
 
 
