@@ -13,14 +13,14 @@
 <body>
     <div class="container my-3">
         <h1>Add your URL</h1>
-        <form>
+        <form method="POST" action="/">
             <div class="mb-3">
-                <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                <input type="text" class="form-control" id="url" name="url" aria-describedby="emailHelp"
                     placeholder="https://youtube.com/xy......sha384-b5kHyXgcpbZJO">
                 <div id="emailHelp" class="form-text">We'll never share your url with anyone else.</div>
             </div>
             <div class="mb-3">
-                <input type="text" class="form-control" id="keyword" placeholder="Keyword" style="display: none;">
+                <input type="text" class="form-control" id="keyword" name="keyword" placeholder="Keyword" style="display: none;">
             </div>
             <div class="form-check form-switch mb-2">
                 <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault" onclick="showKeyword()">
