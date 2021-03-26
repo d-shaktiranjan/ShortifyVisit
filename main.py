@@ -39,6 +39,8 @@ def index():
     if request.method == "POST":
         url = request.form.get("url")
         keyword = request.form.get("keyword")
+        if len(keyword) == 0:
+            keyword = generateKeyword()
         if checkKeyWord(keyword):
             newUrl = Urls(url=url, keyword=keyword)
             db.session.add(newUrl)
