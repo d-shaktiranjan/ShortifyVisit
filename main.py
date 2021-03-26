@@ -30,7 +30,10 @@ def index():
 @app.route("/<string:slug>", methods=["POST", "GET"])
 def redirector(slug):
     url = Urls.query.filter_by(keyword=slug).first()
-    return redirect(url.url)
+    try:
+        return redirect(url.url)
+    except:
+        return render_template('notFound.html')
 
 
 if __name__ == "__main__":
