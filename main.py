@@ -1,5 +1,7 @@
 from flask import Flask, render_template, request, redirect
 from flask_sqlalchemy import SQLAlchemy
+import random
+import string
 
 app = Flask(__name__)
 app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///urls.db"
@@ -19,6 +21,16 @@ def checkKeyWord(word):
         return True
     else:
         return False
+
+
+def generateKeyword():
+    letters = string.ascii_lowercase
+    word = ''.join(random.choice(letters) for i in range(3)).join(
+        str(random.randint(0, 9)) for i in range(2))
+    if checkKeyWord(word):
+        return word
+    else:
+        generateKeyword()
 
 
 @app.route('/', methods=['post', 'get'])
