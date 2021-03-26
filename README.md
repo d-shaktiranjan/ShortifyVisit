@@ -13,6 +13,17 @@ pip install flask
 pip install Flask-SQLAlchemy
 ```
 
+## Create Database:
+```bash
+python
+```
+```bash
+from main import db
+```
+```bash
+db.create_all()
+```
+
 ## Run Development Server
 
 ```bash
