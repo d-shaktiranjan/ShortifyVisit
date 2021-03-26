@@ -22,6 +22,8 @@ def index():
         newUrl = Urls(url=url, keyword=keyword)
         db.session.add(newUrl)
         db.session.commit()
+        shortUrl = str("http://127.0.0.1:5000/")+keyword
+        return render_template('index.html', url=shortUrl, status=True)
     return render_template('index.html')
 
 
