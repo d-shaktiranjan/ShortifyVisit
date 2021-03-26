@@ -30,6 +30,12 @@ Short URL
         Your link is ready:- {{url}}
     </div>
     {% endif %}
+
+    {% if error %}
+    <div class="alert alert-danger" role="alert">
+        Try a different keyword
+    </div>
+    {% endif %}
 </div>
 <script src="{{ url_for('static', filename='index.js') }}"></script>
 {% endblock %}

@@ -13,18 +13,29 @@ class Urls(db.Model):
     keyword = db.Column(db.String, unique=True, nullable=False)
 
 
+def checkKeyWord(word):
+    url = Urls.query.filter_by(keyword=word).first()
+    if url is None:
+        return True
+    else:
+        return False
+
+
 @app.route('/', methods=['post', 'get'])
 def index():
+    error = False
     if request.method == "POST":
         url = request.form.get("url")
         keyword = request.form.get("keyword")
-
-        newUrl = Urls(url=url, keyword=keyword)
-        db.session.add(newUrl)
-        db.session.commit()
-        shortUrl = str("http://127.0.0.1:5000/")+keyword
-        return render_template('index.html', url=shortUrl, status=True)
-    return render_template('index.html')
+        if checkKeyWord(keyword):
+            newUrl = Urls(url=url, keyword=keyword)
+            db.session.add(newUrl)
+            db.session.commit()
+            shortUrl = str("http://127.0.0.1:5000/")+keyword
+            return render_template('index.html', url=shortUrl, status=True)
+        else:
+            error = True
+    return render_template('index.html', error=error)
 
 
 @app.route("/<string:slug>", methods=["POST", "GET"])
