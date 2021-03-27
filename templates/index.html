@@ -9,8 +9,8 @@ Short URL
     <h1>Add your URL</h1>
     <form method="POST" action="/">
         <div class="mb-3">
-            <input type="text" class="form-control" id="url" name="url" aria-describedby="emailHelp"
-                placeholder="https://youtube.com/xy......sha384-b5kHyXgcpbZJO">
+            <input required type="text" class="form-control" id="url" name="url" aria-describedby="emailHelp"
+                placeholder="For ex : https://www.youtube.com/channel/UCRJSgiSj6E5izqMcUQKX8qw">
             <div id="emailHelp" class="form-text">We'll never share your url with anyone else.</div>
         </div>
         <div class="mb-3">
@@ -21,13 +21,14 @@ Short URL
             <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault" onclick="showKeyword()">
             <label class="form-check-label" for="flexSwitchCheckDefault">Add custom keyword</label>
         </div>
-        <button type="submit" class="btn btn-primary">Short URL</button>
+        <button type="submit" class="btn btn-primary">Shorten</button>
+        <input type="button" class="btn btn-success" value="Copy" id="copyBtn">
     </form>
 </div>
 <div class="container my-3">
     {% if status %}
     <div class="alert alert-success" role="alert">
-        Your link is ready:- {{url}}
+        Here's your link : {{url}}
     </div>
     {% endif %}
 
@@ -38,4 +39,13 @@ Short URL
     {% endif %}
 </div>
 <script src="{{ url_for('static', filename='index.js') }}"></script>
+<script>
+    document.getElementById('copyBtn').onclick = function copyText() {
+        let link = "{{url}}"
+        copy(link);
+        function copy(text) {
+            navigator.clipboard.writeText(text);
+        }
+    }
+</script>
 {% endblock %}
