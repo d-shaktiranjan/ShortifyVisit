@@ -22,7 +22,9 @@ Short URL
             <label class="form-check-label" for="flexSwitchCheckDefault">Add custom keyword</label>
         </div>
         <button type="submit" class="btn btn-primary">Shorten</button>
+        {% if status %}
         <input type="button" class="btn btn-success" value="Copy" id="copyBtn">
+        {% endif %}
     </form>
 </div>
 <div class="container my-3">
