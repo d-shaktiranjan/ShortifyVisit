@@ -6,7 +6,7 @@ Short URL
 
 {% block body %}
 <div class="container my-3">
-    <h1>Add your URL</h1>
+    <h1>Add an URL</h1>
     <form method="POST" action="/">
         <div class="mb-3">
             <input required type="text" class="form-control" id="url" name="url" aria-describedby="emailHelp"
@@ -22,15 +22,13 @@ Short URL
             <label class="form-check-label" for="flexSwitchCheckDefault">Add custom keyword</label>
         </div>
         <button type="submit" class="btn btn-primary">Shorten</button>
-        {% if status %}
-        <input type="button" class="btn btn-success" value="Copy" id="copyBtn">
-        {% endif %}
     </form>
 </div>
 <div class="container my-3">
     {% if status %}
-    <div class="alert alert-success" role="alert">
-        Here's your link : {{url}}
+    <div class="alert alert-success alertWrapper" role="alert">
+        <div class="alertText">Here's your link : {{url}}</div>
+        <input type="button" class="btn btn-light" value="Copy" id="copyBtn" role="button">
     </div>
     {% endif %}
 
@@ -48,6 +46,9 @@ Short URL
         function copy(text) {
             navigator.clipboard.writeText(text);
         }
+
+        var btn = document.getElementById('copyBtn');
+        if (btn.value=='Copy') btn.value='✔ Copied';
     }
 </script>
 {% endblock %}
