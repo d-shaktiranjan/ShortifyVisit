@@ -1,0 +1,19 @@
+@import url("https://fonts.googleapis.com/css2?family=Lexend&display=swap");
+
+body {
+  font-family: "Lexend", sans-serif;
+}
+
+.alertWrapper {
+  display: flex;
+  justify-content: space-between;
+}
+.alertWrapper .btn {
+  justify-content: flex-end;
+  display: flex;
+}
+
+.alertText {
+  margin-top: auto;
+  margin-bottom: auto;
+}
