@@ -2,10 +2,6 @@
   display: flex;
   justify-content: space-between;
 }
-.alertWrapper .btn {
-  justify-content: flex-end;
-  display: flex;
-}
 
 .alertText {
   margin-top: auto;
