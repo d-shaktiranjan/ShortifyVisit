@@ -4,7 +4,7 @@ A [Flask](https://flask.palletsprojects.com/en/1.1.x/) project which shortens an
 
 ## Setup
 
-Ensure that latest version of [Python](https://www.python.org/) is installed on your PC.
+Ensure that the latest version of [Python](https://www.python.org/) is installed on your PC.
 
 After installation, clone the repository and install the required dependencies by running the following commands one at a time:
 
@@ -13,7 +13,7 @@ After installation, clone the repository and install the required dependencies b
 
 ### Creating Database
 
-To create the database run the following commands:
+To create the database run the following commands one at a time:
 
     $ python
     $ from main import db
@@ -25,4 +25,4 @@ And for the final step run the following:
 
     $ python main.py
 
-### Public endpoint is at http://127.0.0.1:5000
+### Public endpoint is at - http://127.0.0.1:5000
