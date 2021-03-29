@@ -16,8 +16,9 @@ After installation, clone the repository and install the required dependencies b
 To create the database run the following commands one at a time:
 
     $ python
-    $ from main import db
-    $ db.create_all()
+    >>> from main import db
+    >>> db.create_all()
+    >>> exit()
 
 ### Run Development Server
 
