@@ -1,32 +1,28 @@
-# Short your url
-## (A Flask Project)
+# Short-URL
 
-# Setup
+A [Flask](https://flask.palletsprojects.com/en/1.1.x/) project which shortens any URL with randomised or user provided keywords.
 
-## Install Flask:
-```bash
-pip install flask
-```
+## Setup
 
-## Install Flask-SQLAlchemy:
-```bash
-pip install Flask-SQLAlchemy
-```
+Ensure that latest version of [Python](https://www.python.org/) is installed on your PC.
 
-## Create Database:
-```bash
-python
-```
-```bash
-from main import db
-```
-```bash
-db.create_all()
-```
+After installation, clone the repository and install the required dependencies by running the following commands one at a time:
 
-## Run Development Server
+    $ pip install flask
+    $ pip install Flask-SQLAlchemy
 
-```bash
-python main.py
-```
-## Public endpoint is at http://127.0.0.1:5000
+### Creating Database
+
+To create the database run the following commands:
+
+    $ python
+    $ from main import db
+    $ db.create_all()
+
+### Run Development Server
+
+And for the final step run the following:
+
+    $ python main.py
+
+### Public endpoint is at http://127.0.0.1:5000
