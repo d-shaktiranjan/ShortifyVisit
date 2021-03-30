@@ -11,8 +11,14 @@ db = SQLAlchemy(app)
 
 class Urls(db.Model):
     id = db.Column(db.Integer, primary_key=True)
+    auto = db.Column(db.Integer, unique=False)
     url = db.Column(db.String, unique=False, nullable=False)
     keyword = db.Column(db.String, unique=True, nullable=False)
+
+
+def writeTypeOfLink(word):
+    status = Urls.query.filter_by(url=word).first()
+    return bool(status.auto)
 
 
 def checkKeyWord(word):
@@ -47,15 +53,17 @@ def index():
     if request.method == "POST":
         url = request.form.get("url")
         keyword = request.form.get("keyword")
+        auto = False
 
-        if len(keyword) == 0 and checkLink(url):
+        if len(keyword) == 0 and checkLink(url) and writeTypeOfLink(url):
             slug = Urls.query.filter_by(url=url).first()
             return render_template('index.html', url=str(request.host_url)+slug.keyword, status=True)
         if len(keyword) == 0:
+            auto = True
             keyword = generateKeyword()
 
         if checkKeyWord(keyword):
-            newUrl = Urls(url=url, keyword=keyword)
+            newUrl = Urls(url=url, keyword=keyword, auto=auto)
             db.session.add(newUrl)
             db.session.commit()
             shortUrl = str(request.host_url)+keyword
