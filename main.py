@@ -23,6 +23,14 @@ def checkKeyWord(word):
         return False
 
 
+def checkLink(word):
+    link = Urls.query.filter_by(url=word).first()
+    if link is None:
+        return False
+    else:
+        return True
+
+
 def generateKeyword():
     letters = string.ascii_lowercase
     word = ''.join(random.choice(letters) for i in range(3)).join(
@@ -39,8 +47,13 @@ def index():
     if request.method == "POST":
         url = request.form.get("url")
         keyword = request.form.get("keyword")
+
+        if len(keyword) == 0 and checkLink(url):
+            slug = Urls.query.filter_by(url=url).first()
+            return render_template('index.html', url=str("http://127.0.0.1:5000/")+slug.keyword, status=True)
         if len(keyword) == 0:
             keyword = generateKeyword()
+
         if checkKeyWord(keyword):
             newUrl = Urls(url=url, keyword=keyword)
             db.session.add(newUrl)
