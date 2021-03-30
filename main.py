@@ -50,7 +50,7 @@ def index():
 
         if len(keyword) == 0 and checkLink(url):
             slug = Urls.query.filter_by(url=url).first()
-            return render_template('index.html', url=str("http://127.0.0.1:5000/")+slug.keyword, status=True)
+            return render_template('index.html', url=str(request.host_url)+slug.keyword, status=True)
         if len(keyword) == 0:
             keyword = generateKeyword()
 
@@ -58,7 +58,7 @@ def index():
             newUrl = Urls(url=url, keyword=keyword)
             db.session.add(newUrl)
             db.session.commit()
-            shortUrl = str("http://127.0.0.1:5000/")+keyword
+            shortUrl = str(request.host_url)+keyword
             return render_template('index.html', url=shortUrl, status=True)
         else:
             error = True
