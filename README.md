@@ -2,6 +2,8 @@
 
 A [Flask](https://flask.palletsprojects.com/en/1.1.x/) project which shortens any URL with randomised or user provided keywords.
 
+# Quick Demo
+![Demo](./images/Demo.gif "Demo")
 ## Setup
 
 Ensure that the latest version of [Python](https://www.python.org/) is installed on your PC.
